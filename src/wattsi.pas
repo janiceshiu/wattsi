@@ -2050,6 +2050,9 @@ Result := False;
       MDNBox, PotentialExistingBox: TElement;
       InsertBeforeLocation: TNode;
    begin
+      if ((CurrentVariant = vHTML) and InSplit) then
+         // MDN annotations have already been inserted in this case.
+         exit;
       if (not(Element.HasAttribute('id'))) then
          exit;
       ID := Element.GetAttribute('id').AsString;
